@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"go.einride.tech/can"
+	"github.com/cleey/can-go"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sys/unix"
 	"gotest.tools/v3/assert"

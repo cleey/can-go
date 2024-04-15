@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"io"
 
-	"go.einride.tech/can"
+	"github.com/cleey/can-go"
 )
 
 type ReceiverOption func(*receiverOpts)

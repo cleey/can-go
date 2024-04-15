@@ -1,7 +1,7 @@
 # :electric_plug: CAN Go
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.einride.tech/can)](https://pkg.go.dev/go.einride.tech/can)
-[![GoReportCard](https://goreportcard.com/badge/go.einride.tech/can)](https://goreportcard.com/report/go.einride.tech/can)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/cleey/can-go)](https://pkg.go.dev/github.com/cleey/can-go)
+[![GoReportCard](https://goreportcard.com/badge/github.com/cleey/can-go)](https://goreportcard.com/report/github.com/cleey/can-go)
 [![Codecov](https://codecov.io/gh/einride/can-go/branch/master/graph/badge.svg)](https://codecov.io/gh/einride/can-go)
 
 CAN toolkit for Go programmers.
@@ -62,7 +62,7 @@ func main() {
 It is possible to generate Go code from a `.dbc` file.
 
 ```
-$ go run go.einride.tech/can/cmd/cantool generate <dbc file root folder> <output folder>
+$ go run github.com/cleey/can-go/cmd/cantool generate <dbc file root folder> <output folder>
 ```
 
 In order to generate Go code that makes sense, we currently perform some
