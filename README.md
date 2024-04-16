@@ -21,7 +21,7 @@ func main() {
 
 	canID = uint32(298)
 	canDataHexStr = "1A02A300C23290802"
-    params := obcCanFd.ParseCanHexStr(canID, canDataHexStr)
+	params := obcCanFd.ParseCanHexStr(canID, canDataHexStr)
 	fmt.Printf("canID(%d), canData(%v)", canID, params)
 }
 ```
