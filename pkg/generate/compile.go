@@ -15,11 +15,14 @@ type CompileResult struct {
 }
 
 func Compile(sourceFile string, data []byte) (result *CompileResult, err error) {
+	fmt.Printf("\n\n===========cccc=========================================heheh\n\n")
 	p := dbc.NewParser(sourceFile, data)
 	if err := p.Parse(); err != nil {
 		return nil, fmt.Errorf("failed to parse DBC source file: %w", err)
 	}
+	fmt.Printf("\n\n===========dddd=========================================heheh\n\n")
 	defs := p.Defs()
+	fmt.Printf("\n\n=====================================================heheh\n\n")
 	c := &compiler{
 		db:   &descriptor.Database{SourceFile: sourceFile},
 		defs: defs,
@@ -27,6 +30,23 @@ func Compile(sourceFile string, data []byte) (result *CompileResult, err error) 
 	c.collectDescriptors()
 	c.addMetadata()
 	c.sortDescriptors()
+	return &CompileResult{Database: c.db, Warnings: c.warnings}, nil
+}
+
+func CompileDefs(sourceFile string, defs []dbc.Def) (result *CompileResult, err error) {
+
+	fmt.Printf("\n\n=====================================================heheh\n\n")
+	c := &compiler{
+		db:   &descriptor.Database{SourceFile: sourceFile},
+		defs: defs,
+	}
+	fmt.Printf("\n\n=====================================================haha\n\n")
+	c.collectDescriptors()
+	fmt.Printf("\n\n=====================================================hacca\n\n")
+	c.addMetadata()
+	fmt.Printf("\n\n=====================================================hdd\n\n")
+	c.sortDescriptors()
+	fmt.Printf("\n\n=====================================================hsort\n\n")
 	return &CompileResult{Database: c.db, Warnings: c.warnings}, nil
 }
 

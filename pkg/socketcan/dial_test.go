@@ -52,7 +52,7 @@ func TestConn_TransmitReceiveTCP(t *testing.T) {
 	lis, err := net.Listen("tcp", "localhost:0")
 	assert.NilError(t, err)
 	var g errgroup.Group
-	frame := can.Frame{ID: 42, Length: 5, Data: can.Data{'H', 'e', 'l', 'l', 'o'}}
+	frame := can.Frame{ID: 42, Length: 5, Data: common.Data{'H', 'e', 'l', 'l', 'o'}}
 	g.Go(func() error {
 		conn, err := lis.Accept()
 		if err != nil {

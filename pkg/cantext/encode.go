@@ -41,7 +41,7 @@ func Marshal(m generated.Message) []byte {
 	return buf
 }
 
-func AppendSignal(buf []byte, s *descriptor.Signal, d can.Data) []byte {
+func AppendSignal(buf []byte, s *descriptor.Signal, d common.Data) []byte {
 	buf = append(buf, s.Name...)
 	buf = append(buf, ": "...)
 	switch {
@@ -70,7 +70,7 @@ func AppendSignal(buf []byte, s *descriptor.Signal, d can.Data) []byte {
 	return buf
 }
 
-func AppendSignalCompact(buf []byte, s *descriptor.Signal, d can.Data) []byte {
+func AppendSignalCompact(buf []byte, s *descriptor.Signal, d common.Data) []byte {
 	buf = append(buf, s.Name...)
 	buf = append(buf, ": "...)
 	valueDescription, hasValueDescription := s.UnmarshalValueDescription(d)

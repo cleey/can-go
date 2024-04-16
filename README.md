@@ -12,6 +12,21 @@ documentation for more details).
 
 ## Examples
 
+### Use DBC file to parse OBC CanFd data
+
+```go
+func main() {
+	dbcFile = "/path/xxxx.dbc"
+	obcCanFd, err := obc.NewObcCanFD(dbcFile)
+
+	canID = uint32(298)
+	canDataHexStr = "1A02A300C23290802"
+    params := obcCanFd.ParseCanHexStr(canID, canDataHexStr)
+	fmt.Printf("canID(%d), canData(%v)", canID, params)
+}
+```
+
+
 ### Setting up a CAN interface
 
 ```go

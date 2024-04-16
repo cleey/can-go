@@ -21,7 +21,7 @@ func TestMarshal(t *testing.T) {
 		{
 			name: "with enum",
 			msg: &testMessage{
-				frame:      can.Frame{ID: 100, Length: 1, Data: can.Data{2}},
+				frame:      can.Frame{ID: 100, Length: 1, Data: common.Data{2}},
 				descriptor: newDriverHeartbeatDescriptor(),
 			},
 			expected: `
@@ -33,7 +33,7 @@ DriverHeartbeat
 		{
 			name: "with unit",
 			msg: &testMessage{
-				frame:      can.Frame{ID: 100, Length: 3, Data: can.Data{1, 0x7b}},
+				frame:      can.Frame{ID: 100, Length: 3, Data: common.Data{1, 0x7b}},
 				descriptor: newMotorStatusDescriptor(),
 			},
 			expected: `
@@ -90,7 +90,7 @@ func TestAppendDelayTime(t *testing.T) {
 
 func TestAppendFrame(t *testing.T) {
 	const expected = "Frame: 042#123456"
-	actual := string(AppendFrame([]byte{}, can.Frame{ID: 0x42, Length: 3, Data: can.Data{0x12, 0x34, 0x56}}))
+	actual := string(AppendFrame([]byte{}, can.Frame{ID: 0x42, Length: 3, Data: common.Data{0x12, 0x34, 0x56}}))
 	assert.Equal(t, expected, actual)
 }
 

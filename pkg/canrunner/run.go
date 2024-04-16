@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/cleey/can-go"
-	"github.com/cleey/can-go/internal/clock"
+	"github.com/cleey/can-go/pkg/clock"
 	"github.com/cleey/can-go/pkg/descriptor"
 	"github.com/cleey/can-go/pkg/generated"
 	"github.com/cleey/can-go/pkg/socketcan"

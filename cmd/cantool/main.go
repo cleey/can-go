@@ -10,7 +10,6 @@ import (
 	"text/scanner"
 
 	"github.com/alecthomas/kingpin/v2"
-	"github.com/cleey/can-go/internal/generate"
 	"github.com/cleey/can-go/pkg/dbc"
 	"github.com/cleey/can-go/pkg/dbc/analysis"
 	"github.com/cleey/can-go/pkg/dbc/analysis/passes/definitiontypeorder"
@@ -31,6 +30,7 @@ import (
 	"github.com/cleey/can-go/pkg/dbc/analysis/passes/unitsuffixes"
 	"github.com/cleey/can-go/pkg/dbc/analysis/passes/valuedescriptions"
 	"github.com/cleey/can-go/pkg/dbc/analysis/passes/version"
+	"github.com/cleey/can-go/pkg/generate"
 	"github.com/fatih/color"
 )
 

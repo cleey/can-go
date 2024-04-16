@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cleey/can-go/internal/mocks/gen/mocksocketcan"
+	"github.com/cleey/can-go/pkg/mocks/gen/mocksocketcan"
 	"github.com/golang/mock/gomock"
 	"gotest.tools/v3/assert"
 )

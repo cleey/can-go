@@ -8,10 +8,10 @@ import (
 	"time"
 
 	"github.com/cleey/can-go"
-	"github.com/cleey/can-go/internal/mocks/gen/mockcanrunner"
-	"github.com/cleey/can-go/internal/mocks/gen/mockclock"
 	"github.com/cleey/can-go/pkg/canrunner"
 	"github.com/cleey/can-go/pkg/descriptor"
+	"github.com/cleey/can-go/pkg/mocks/gen/mockcanrunner"
+	"github.com/cleey/can-go/pkg/mocks/gen/mockclock"
 	"github.com/golang/mock/gomock"
 	"golang.org/x/sync/errgroup"
 	"gotest.tools/v3/assert"

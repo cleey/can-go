@@ -62,7 +62,7 @@ func TestEmulate_SendToAll(t *testing.T) {
 				})
 			}
 			// And then the emulator transmits a CAN frame
-			txFrame := can.Frame{ID: 42, Length: 4, Data: can.Data{1, 2, 3, 4}}
+			txFrame := can.Frame{ID: 42, Length: 4, Data: common.Data{1, 2, 3, 4}}
 			err = e.TransmitFrame(context.Background(), txFrame)
 			assert.NilError(t, err)
 			// Then: Every receiver should receive the frame and not return an error
@@ -84,14 +84,14 @@ func TestEmulate_ConnectMany(t *testing.T) {
 			noTransmitters: 1,
 			canFrames: []can.Frame{
 				{ID: 42},
-				{ID: 43, Length: 4, Data: can.Data{1, 2, 3, 4}},
+				{ID: 43, Length: 4, Data: common.Data{1, 2, 3, 4}},
 			},
 		},
 		{
 			noTransmitters: 10,
 			canFrames: []can.Frame{
 				{ID: 42},
-				{ID: 43, Length: 4, Data: can.Data{1, 2, 3, 4}},
+				{ID: 43, Length: 4, Data: common.Data{1, 2, 3, 4}},
 				{ID: 44, IsRemote: true},
 			},
 		},
@@ -99,11 +99,11 @@ func TestEmulate_ConnectMany(t *testing.T) {
 			noTransmitters: 50,
 			canFrames: []can.Frame{
 				{ID: 42},
-				{ID: 43, Length: 4, Data: can.Data{1, 2, 3, 4}},
+				{ID: 43, Length: 4, Data: common.Data{1, 2, 3, 4}},
 				{ID: 44, IsRemote: true},
-				{ID: 45, Length: 7, Data: can.Data{1, 2, 3, 4, 5, 6, 7}},
+				{ID: 45, Length: 7, Data: common.Data{1, 2, 3, 4, 5, 6, 7}},
 				{ID: 46, IsExtended: false},
-				{ID: 47, Length: 1, Data: can.Data{1}},
+				{ID: 47, Length: 1, Data: common.Data{1}},
 				{ID: 48, IsRemote: false},
 			},
 		},

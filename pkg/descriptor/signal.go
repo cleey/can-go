@@ -3,7 +3,7 @@ package descriptor
 import (
 	"math"
 
-	"github.com/cleey/can-go"
+	"github.com/cleey/can-go/pkg/common"
 )
 
 // Signal describes a CAN signal.
@@ -83,7 +83,7 @@ func (s *Signal) FromPhysical(physical float64) float64 {
 }
 
 // UnmarshalPhysical returns the physical value of the signal in the provided CAN frame.
-func (s *Signal) UnmarshalPhysical(d can.Data) float64 {
+func (s *Signal) UnmarshalPhysical(d common.Data) float64 {
 	switch {
 	case s.Length == 1:
 		if d.Bit(s.Start) {
@@ -110,7 +110,7 @@ func (s *Signal) UnmarshalPhysical(d can.Data) float64 {
 }
 
 // UnmarshalUnsigned returns the unsigned value of the signal in the provided CAN frame.
-func (s *Signal) UnmarshalUnsigned(d can.Data) uint64 {
+func (s *Signal) UnmarshalUnsigned(d common.Data) uint64 {
 	if s.IsBigEndian {
 		return d.UnsignedBitsBigEndian(s.Start, s.Length)
 	}
@@ -118,7 +118,7 @@ func (s *Signal) UnmarshalUnsigned(d can.Data) uint64 {
 }
 
 // UnmarshalValueDescription returns the value description of the signal in the provided CAN data.
-func (s *Signal) UnmarshalValueDescription(d can.Data) (string, bool) {
+func (s *Signal) UnmarshalValueDescription(d common.Data) (string, bool) {
 	if len(s.ValueDescriptions) == 0 {
 		return "", false
 	}
@@ -132,7 +132,7 @@ func (s *Signal) UnmarshalValueDescription(d can.Data) (string, bool) {
 }
 
 // UnmarshalSigned returns the signed value of the signal in the provided CAN frame.
-func (s *Signal) UnmarshalSigned(d can.Data) int64 {
+func (s *Signal) UnmarshalSigned(d common.Data) int64 {
 	if s.IsBigEndian {
 		return d.SignedBitsBigEndian(s.Start, s.Length)
 	}
@@ -140,12 +140,12 @@ func (s *Signal) UnmarshalSigned(d can.Data) int64 {
 }
 
 // UnmarshalBool returns the bool value of the signal in the provided CAN frame.
-func (s *Signal) UnmarshalBool(d can.Data) bool {
+func (s *Signal) UnmarshalBool(d common.Data) bool {
 	return d.Bit(s.Start)
 }
 
 // MarshalUnsigned sets the unsigned value of the signal in the provided CAN frame.
-func (s *Signal) MarshalUnsigned(d *can.Data, value uint64) {
+func (s *Signal) MarshalUnsigned(d *common.Data, value uint64) {
 	if s.IsBigEndian {
 		d.SetUnsignedBitsBigEndian(s.Start, s.Length, value)
 	} else {
@@ -154,7 +154,7 @@ func (s *Signal) MarshalUnsigned(d *can.Data, value uint64) {
 }
 
 // MarshalSigned sets the signed value of the signal in the provided CAN frame.
-func (s *Signal) MarshalSigned(d *can.Data, value int64) {
+func (s *Signal) MarshalSigned(d *common.Data, value int64) {
 	if s.IsBigEndian {
 		d.SetSignedBitsBigEndian(s.Start, s.Length, value)
 	} else {
@@ -163,7 +163,7 @@ func (s *Signal) MarshalSigned(d *can.Data, value int64) {
 }
 
 // MarshalBool sets the bool value of the signal in the provided CAN frame.
-func (s *Signal) MarshalBool(d *can.Data, value bool) {
+func (s *Signal) MarshalBool(d *common.Data, value bool) {
 	d.SetBit(s.Start, value)
 }
 

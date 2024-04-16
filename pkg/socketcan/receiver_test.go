@@ -15,7 +15,7 @@ func TestReceiver_ReceiveFrames_Options(t *testing.T) {
 			// id---------------> | dlc | padding-------> | data----------------------------------------> |
 			0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x12, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		}
-		expected := can.Frame{ID: 0x01, Length: 2, Data: can.Data{0x12, 0x34}}
+		expected := can.Frame{ID: 0x01, Length: 2, Data: common.Data{0x12, 0x34}}
 		receiver := NewReceiver(io.NopCloser(bytes.NewReader(input)), opt)
 		assert.Assert(t, receiver.Receive(), "expecting 1 CAN frames")
 		assert.NilError(t, receiver.Err())
@@ -62,7 +62,7 @@ func TestReceiver_ReceiveFrames(t *testing.T) {
 				0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x12, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 			},
 			expectedFrames: []can.Frame{
-				{ID: 0x01, Length: 2, Data: can.Data{0x12, 0x34}},
+				{ID: 0x01, Length: 2, Data: common.Data{0x12, 0x34}},
 			},
 		},
 		{
@@ -73,7 +73,7 @@ func TestReceiver_ReceiveFrames(t *testing.T) {
 				0x00,
 			},
 			expectedFrames: []can.Frame{
-				{ID: 0x01, Length: 2, Data: can.Data{0x12, 0x34}},
+				{ID: 0x01, Length: 2, Data: common.Data{0x12, 0x34}},
 			},
 		},
 		{
@@ -85,8 +85,8 @@ func TestReceiver_ReceiveFrames(t *testing.T) {
 				0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x56, 0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 			},
 			expectedFrames: []can.Frame{
-				{ID: 0x01, Length: 2, Data: can.Data{0x12, 0x34}},
-				{ID: 0x02, Length: 2, Data: can.Data{0x56, 0x78}},
+				{ID: 0x01, Length: 2, Data: common.Data{0x12, 0x34}},
+				{ID: 0x02, Length: 2, Data: common.Data{0x56, 0x78}},
 			},
 		},
 	} {
@@ -121,7 +121,7 @@ func TestReceiver_ReceiveErrorFrame(t *testing.T) {
 	// expect frame
 	assert.Assert(t, receiver.Receive())
 	assert.Assert(t, !receiver.HasErrorFrame())
-	assert.Equal(t, can.Frame{ID: 0x01, Length: 2, Data: can.Data{0x12, 0x34}}, receiver.Frame())
+	assert.Equal(t, can.Frame{ID: 0x01, Length: 2, Data: common.Data{0x12, 0x34}}, receiver.Frame())
 	// expect error frame
 	assert.Assert(t, receiver.Receive())
 	assert.Assert(t, receiver.HasErrorFrame())
@@ -129,7 +129,7 @@ func TestReceiver_ReceiveErrorFrame(t *testing.T) {
 	// expect frame
 	assert.Assert(t, receiver.Receive())
 	assert.Assert(t, !receiver.HasErrorFrame())
-	assert.Equal(t, can.Frame{ID: 0x02, Length: 2, Data: can.Data{0x12, 0x34}}, receiver.Frame())
+	assert.Equal(t, can.Frame{ID: 0x02, Length: 2, Data: common.Data{0x12, 0x34}}, receiver.Frame())
 	// expect end of stream
 	assert.Assert(t, !receiver.Receive())
 	assert.NilError(t, receiver.Err())

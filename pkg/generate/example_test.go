@@ -34,7 +34,7 @@ func TestExampleDatabase_MarshalUnmarshal(t *testing.T) {
 			f: can.Frame{
 				ID:     500,
 				Length: 6,
-				Data:   can.Data{5, 2, 214, 123, 1, 2},
+				Data:   common.Data{5, 2, 214, 123, 1, 2},
 			},
 		},
 
@@ -46,7 +46,7 @@ func TestExampleDatabase_MarshalUnmarshal(t *testing.T) {
 			f: can.Frame{
 				ID:     400,
 				Length: 3,
-				Data:   can.Data{0x1, 0xa7, 0x1},
+				Data:   common.Data{0x1, 0xa7, 0x1},
 			},
 		},
 
@@ -57,7 +57,7 @@ func TestExampleDatabase_MarshalUnmarshal(t *testing.T) {
 			f: can.Frame{
 				ID:     400,
 				Length: 3,
-				Data:   can.Data{0x00, 0xe0, 0x2e},
+				Data:   common.Data{0x00, 0xe0, 0x2e},
 			},
 		},
 	} {

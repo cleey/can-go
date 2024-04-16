@@ -4,7 +4,6 @@ import (
 	"math"
 	"testing"
 
-	"github.com/cleey/can-go"
 	"gotest.tools/v3/assert"
 )
 
@@ -48,7 +47,7 @@ func TestSignal_UnmarshalSigned_BigEndian(t *testing.T) {
 		Start:       32,
 	}
 	const value int64 = -8
-	var data can.Data
+	var data common.Data
 	data.SetSignedBitsBigEndian(s.Start, s.Length, value)
 	assert.Equal(t, value, s.UnmarshalSigned(data))
 }
@@ -61,9 +60,9 @@ func TestSignal_MarshalUnsigned_BigEndian(t *testing.T) {
 		Start:       32,
 	}
 	const value uint64 = 8
-	var expected can.Data
+	var expected common.Data
 	expected.SetUnsignedBitsBigEndian(s.Start, s.Length, value)
-	var actual can.Data
+	var actual common.Data
 	s.MarshalUnsigned(&actual, value)
 	assert.DeepEqual(t, expected, actual)
 }
@@ -77,9 +76,9 @@ func TestSignal_MarshalSigned_BigEndian(t *testing.T) {
 		Start:       32,
 	}
 	const value int64 = -8
-	var expected can.Data
+	var expected common.Data
 	expected.SetSignedBitsBigEndian(s.Start, s.Length, value)
-	var actual can.Data
+	var actual common.Data
 	s.MarshalSigned(&actual, value)
 	assert.DeepEqual(t, expected, actual)
 }

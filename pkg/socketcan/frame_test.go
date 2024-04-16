@@ -34,7 +34,7 @@ func TestFrame_EncodeDecode(t *testing.T) {
 			frame: can.Frame{
 				ID:     0x00000001,
 				Length: 8,
-				Data:   can.Data{1, 2, 3, 4, 5, 6, 7, 8},
+				Data:   common.Data{1, 2, 3, 4, 5, 6, 7, 8},
 			},
 			socketCANFrame: frame{
 				idAndFlags:     0x00000001,

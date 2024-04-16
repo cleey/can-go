@@ -1,9 +1,9 @@
-package can
+package common
 
 import (
 	"fmt"
 
-	"github.com/cleey/can-go/internal/reinterpret"
+	"github.com/cleey/can-go/pkg/reinterpret"
 )
 
 const MaxDataLength = 8

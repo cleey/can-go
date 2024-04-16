@@ -1,6 +1,7 @@
 package dbc
 
 import (
+	"fmt"
 	"strconv"
 	"text/scanner"
 )
@@ -302,6 +303,7 @@ var _ Def = &SignalDef{}
 func (d *SignalDef) parseFrom(p *Parser) {
 	d.Pos = p.keyword(KeywordSignal).pos
 	d.Name = p.identifier()
+	fmt.Printf("cccccd.Name: %s", d.Name)
 	// Parse: Multiplexing
 	if p.peekToken().typ != ':' {
 		tok := p.nextToken()

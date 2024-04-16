@@ -1,9 +1,9 @@
 package signalnames
 
 import (
-	"github.com/cleey/can-go/internal/identifiers"
 	"github.com/cleey/can-go/pkg/dbc"
 	"github.com/cleey/can-go/pkg/dbc/analysis"
+	"github.com/cleey/can-go/pkg/identifiers"
 )
 
 func Analyzer() *analysis.Analyzer {

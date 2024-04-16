@@ -3,7 +3,7 @@ package dbc
 import (
 	"fmt"
 
-	"github.com/cleey/can-go/internal/identifiers"
+	"github.com/cleey/can-go/pkg/identifiers"
 )
 
 // Identifier represents a DBC identifier.

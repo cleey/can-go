@@ -55,7 +55,7 @@ func TestServeMessagesHTTP_Multi(t *testing.T) {
 				descriptor: newDriverHeartbeatDescriptor(),
 			},
 			&testMessage{
-				frame:      can.Frame{ID: 100, Length: 1, Data: can.Data{0x01}},
+				frame:      can.Frame{ID: 100, Length: 1, Data: common.Data{0x01}},
 				descriptor: newDriverHeartbeatDescriptor(),
 			},
 		})
