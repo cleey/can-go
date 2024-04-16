@@ -2,7 +2,6 @@ package obc
 
 import (
 	"encoding/hex"
-	"fmt"
 	"os"
 
 	"github.com/cleey/can-go/pkg/common"
@@ -38,8 +37,6 @@ func (o *ObcCore) Init(dbcFile string) error {
 		return err
 	}
 
-	fmt.Printf("dbc: %v", compileRet.Database)
-
 	var msgs = map[uint32]*descriptor.Message{}
 	for _, v := range compileRet.Database.Messages {
 		msgs[v.ID] = v
@@ -61,13 +58,11 @@ func (o *ObcCore) ParseCanHexStr(canID uint32, hexStr string) []*ObcParam {
 	copy(datanew[:], hexByte)
 
 	for _, s := range dbc_bo.Signals {
-		ret := s.UnmarshalPhysical(datanew)
 		params = append(params, &ObcParam{
 			Name: s.Name,
 			Val:  s.UnmarshalPhysical(datanew),
 			Unit: s.Unit,
 		})
-		fmt.Printf("dbc data is: %s, %v\n", s.Name, ret)
 	}
 
 	return params

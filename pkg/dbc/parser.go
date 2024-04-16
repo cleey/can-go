@@ -107,7 +107,6 @@ func (p *Parser) Parse() (err Error) {
 			def = &UnknownDef{}
 		}
 		def.parseFrom(p)
-		fmt.Printf("cccc def: %v\n", def)
 		p.defs = append(p.defs, def)
 	}
 	return nil
