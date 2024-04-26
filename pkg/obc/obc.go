@@ -45,10 +45,10 @@ func (o *ObcCore) Init(dbcFile string) error {
 	return nil
 }
 
-func (o *ObcCore) ParseCanHexStr(canID uint32, hexStr string) []*ObcParam {
+func (o *ObcCore) ParseCanHexStr(canID uint32, hexStr string) []ObcParam {
 	hexByte, _ := hex.DecodeString(hexStr)
 
-	params := []*ObcParam{}
+	params := []ObcParam{}
 	dbc_bo, ok := o.messages[canID]
 	if !ok {
 		return params
@@ -58,7 +58,7 @@ func (o *ObcCore) ParseCanHexStr(canID uint32, hexStr string) []*ObcParam {
 	copy(datanew[:], hexByte)
 
 	for _, s := range dbc_bo.Signals {
-		params = append(params, &ObcParam{
+		params = append(params, ObcParam{
 			Name: s.Name,
 			Val:  s.UnmarshalPhysical(datanew),
 			Unit: s.Unit,
